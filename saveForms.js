@@ -5,6 +5,8 @@
 	where the keys of the objects are the text-input identifiers from the webpage they were taken from.
 	Every cycle, pop off the oldest one and unshift the newest.
 	
+	Browser icon credit: <div>Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
+	
 */
 
 window.onbeforeunload = function(){
@@ -30,7 +32,7 @@ window.onbeforeunload = function(){
 		console.log(savedObj);
 		savedObj.pop();
 		savedObj.unshift(obj);
-		chrome.storage.local.set({"savedInputs", savedObj}, checkForErrors);
+		chrome.storage.local.set({"savedInputs": savedObj}, checkForErrors);
 	
 	})
 
