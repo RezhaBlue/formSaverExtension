@@ -1,0 +1,13 @@
+{
+	"name": "Form Saver",
+	"manifest_version": 2,
+	"version": 0.0.1,
+	"content_scripts": [{
+			"matches": ["http://*/*", "https://*/*"],
+			"js": ["saveForms.js"],
+			"all_frames": true,
+			"run_at": "document_end"
+		}],
+	"permissions": ["storage"],
+	"background": ["backgroundForms.js"]
+}
