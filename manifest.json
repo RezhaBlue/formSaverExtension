@@ -1,5 +1,5 @@
 {
-	"name": "Form Saver",
+	"name": "Autosave Online",
 	"manifest_version": 2,
 	"version": 0.0.1,
 	"content_scripts": [{
