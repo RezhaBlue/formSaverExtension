@@ -25,17 +25,24 @@ window.onbeforeunload = function(){
 		}
 	}
 	
-	chrome.storage.local.get("savedInputs", (savedObj){
+	if(obj != {}){
+	
+	chrome.storage.local.get("savedInputs", (savedObj)=>{
 		
 		checkForErrors();
 		
 		console.log(savedObj);
-		savedObj.pop();
-		savedObj.unshift(obj);
-		chrome.storage.local.set({"savedInputs": savedObj}, checkForErrors);
-	
+		
+		if(isEmpty(savedObj)){
+			chrome.storage.local.set({"savedInputs": [obj]}, checkForErrors);
+		} else {
+			savedObj.savedInputs.pop();
+			savedObj.savedInputs.unshift(obj);
+			
+			chrome.storage.local.set({"savedInputs": savedObj}, checkForErrors);
+		}
 	})
-
+	}
 }
 
 function checkForErrors() {
@@ -44,4 +51,11 @@ function checkForErrors() {
   } else {
     console.log("OK");
   }
+}
+
+function isEmpty(obj){
+	for (var key in obj) {
+        if (hasOwnProperty.call(obj, key)) return false;
+    }
+	return true;
 }
