@@ -21,28 +21,6 @@ document.addEventListener("focus", function(e){
 	}
 }, true)
 
-x = document.getElementsByTagName("iframe");
-
-for(let i=0; i<x.length; i++){
- 
-	let iframe = x[i].contentWindow;
-	console.log("Iframe:");
-	console.log(iframe);
-	
-  iframe.document.addEventListener("focus", function(e){
-    console.log("Inside the iframe listener");
-	let tag = e.explicitOriginalTarget;
-	if((tag.tagName === 'INPUT' || tag.tagName === 'TEXTAREA' || tag.contentEditable === true) && !tag.getAttribute("acw_saved_4343")){
-		let identifier = tag.getAttribute("name") || tag.getAttribute("id") || tag.getAttribute("class") || arr.length.toString();
-		console.log("Id: " + identifier);
-    tag.setAttribute("acw_saved_4343", true);
-    arr.push(tag);
-    console.log(tag);
-  
-  }}, true)
-}
-
-
 window.onbeforeunload = function(){
  
   let obj = {"url": window.location.href};
