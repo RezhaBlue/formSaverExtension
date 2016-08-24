@@ -9,23 +9,53 @@
 	
 */
 
-window.onbeforeunload = function(){
-  
-  let x = document.querySelectorAll("input, textarea");
-  let obj = {"url": window.location.href};
-  
-  console.log(x);
+//Content script is loaded when DOM is finished as specified by manifest.json.
 
-	for(let i=0; i<x.length; i++){
-		if(x[i].value){
-			console.log(x[i].value)
-			console.log("Got it");
-			let identifier = x[i].getAttribute("name") || x[i].getAttribute("id") || x[i].getAttribute("class") || i.toString();
-			obj[identifier] = x[i].value;
+let arr = [];
+
+document.addEventListener("focus", function(e){
+	let tag = e.explicitOriginalTarget;
+	if((tag.tagName === 'INPUT' || tag.tagName === 'TEXTAREA' || tag.contentEditable === true) && !tag.getAttribute("acw_saved_4343")){
+		arr.push(tag);
+		tag.setAttribute("acw_saved_4343", true);
+	}
+}, true)
+
+x = document.getElementsByTagName("iframe");
+
+for(let i=0; i<x.length; i++){
+ 
+	let iframe = x[i].contentWindow;
+	console.log("Iframe:");
+	console.log(iframe);
+	
+  iframe.document.addEventListener("focus", function(e){
+    console.log("Inside the iframe listener");
+	let tag = e.explicitOriginalTarget;
+	if((tag.tagName === 'INPUT' || tag.tagName === 'TEXTAREA' || tag.contentEditable === true) && !tag.getAttribute("acw_saved_4343")){
+		let identifier = tag.getAttribute("name") || tag.getAttribute("id") || tag.getAttribute("class") || arr.length.toString();
+		console.log("Id: " + identifier);
+    tag.setAttribute("acw_saved_4343", true);
+    arr.push(tag);
+    console.log(tag);
+  
+  }}, true)
+}
+
+
+window.onbeforeunload = function(){
+ 
+  let obj = {"url": window.location.href};
+
+	for(let i=0; i<arr.length; i++){
+		if(arr[i].value){
+			let identifier = arr[i].getAttribute("name") || arr[i].getAttribute("id") || arr[i].getAttribute("class") || i.toString();
+			console.log(arr[i].value)
+			obj[identifier] = arr[i].value;
 		}
 	}
 	
-	if(obj != {}){
+	if(!isEmpty(obj)){
 	
 	chrome.storage.local.get("savedInputs", (savedObj)=>{
 		
@@ -52,6 +82,9 @@ window.onbeforeunload = function(){
 
 		}
 	})
+	} else {
+		console.log("No text inputs saved on this page.");
+		console.log(obj);
 	}
 }
 
@@ -65,7 +98,7 @@ function checkForErrors() {
 
 function isEmpty(obj){
 	for (var key in obj) {
-        if (hasOwnProperty.call(obj, key)) return false;
+        if (hasOwnProperty.call(obj, key) && key !== "url") return false;
     }
 	return true;
 }
