@@ -15,14 +15,14 @@ let arr = [];
 
 document.addEventListener("focus", function(e){
 	let tag = e.explicitOriginalTarget;
-	if((tag.tagName === 'INPUT' || tag.tagName === 'TEXTAREA' || tag.contentEditable === true) && !tag.getAttribute("acw_saved_4343")){
+	if((tag.tagName === 'INPUT' || tag.tagName === 'TEXTAREA' || tag.contentEditable === true) && !tag.getAttribute("acw_saved_4343") && tag.getAttribute("type")!== "password" && tag.getAttribute("type")!== "submit"){
 		arr.push(tag);
 		tag.setAttribute("acw_saved_4343", true);
 	}
 }, true)
 
 window.onbeforeunload = function(){
- 
+  console.log("OnBeforeUnload is called");
   let obj = {"url": window.location.href};
 
 	for(let i=0; i<arr.length; i++){
