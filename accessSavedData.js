@@ -7,22 +7,23 @@ chrome.storage.local.get((savedObj)=>{
 	if(Object.keys(savedObj).length){
 		savedObj.savedInputs.forEach((curr, indx)=>{
 			let x = document.createElement("div");
-			x.innerHTML = 	`<div class="link" id="${indx}">
-							  <a href="#${indx}">${curr.url}</a>
+			x.setAttribute("class", "link");
+			x.setAttribute("id", indx);
+			x.innerHTML = 	`<a href="#${indx}">${curr.url}</a>
 								<table class="table" id="table${indx}">
 									<tr>
 										<th>Field</th>
 										<th>Text</th>
 									</tr>
-								</table>
-							</div>`;
+								</table>`;
 							
 			for(var key in curr){
 				if(key!=="url"){
 					let row = document.createElement("tr");
-					row.innerHTML = `<td>${key}</td>
-									<td>${curr[key]}</td>`
-					x.children[0].children[1].appendChild(row);
+					row.innerHTML = `<td class="keytd">${key}</td>
+									<td class="texttd" id="sub${key}"></td>`;
+					row.children[1].innerText = curr[key];
+					x.children[1].appendChild(row);
 				}
 			}
 							
