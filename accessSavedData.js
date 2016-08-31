@@ -9,20 +9,34 @@ chrome.storage.local.get((savedObj)=>{
 			let x = document.createElement("div");
 			x.setAttribute("class", "link");
 			x.setAttribute("id", indx);
-			x.innerHTML = 	`<a href="#${indx}">${curr.url}</a>
-								<table class="table" id="table${indx}">
-									<tr>
-										<th>Field</th>
-										<th>Text</th>
-									</tr>
-								</table>`;
-							
+			let aElem = document.createElement("a");
+			aElem.setAttribute("href", "#" + indx);
+			aElem.innerText = curr.url;
+			x.appendChild(aElem);
+			let tableElem = document.createElement("table");
+				tableElem.setAttribute("class", "table");
+				tableElem.setAttribute("id", "table" + indx);
+			let trElem = document.createElement("tr");
+			let thOne = document.createElement("th");
+			let thTwo = document.createElement("th");
+				thOne.innerText = "Field";
+				thTwo.innerText = "Text";
+			trElem.appendChild(thOne);
+			trElem.appendChild(thTwo);
+			tableElem.appendChild(trElem);
+			x.appendChild(tableElem);
+	
 			for(var key in curr){
 				if(key!=="url"){
 					let row = document.createElement("tr");
-					row.innerHTML = `<td class="keytd">${key}</td>
-									<td class="texttd" id="sub${key}"></td>`;
-					row.children[1].innerText = curr[key];
+					let tdOne = document.createElement('td');
+						tdOne.setAttribute("class", "keytd");
+						tdOne.innerText = key;
+					let tdTwo = document.createElement('td');
+						tdTwo.setAttribute("class", "texttd");
+						tdTwo.innerText = curr[key];
+						row.appendChild(tdOne);
+						row.appendChild(tdTwo);
 					x.children[1].appendChild(row);
 				}
 			}
@@ -36,6 +50,9 @@ chrome.storage.local.get((savedObj)=>{
 
 document.getElementById("clearAll").addEventListener('click', ()=>{
 	chrome.storage.local.clear(()=>{
-		document.body.innerHTML = "<h3>Data deleted!</h3>";
+		document.body.innerHTML = "";
+		let hElem = document.createElement("h3");
+			hElem.innerText = "Data Deleted!";
+		document.body.appendChild(hElem);
 	});
 })

@@ -2,6 +2,7 @@
 	"name": "Autosave Online",
 	"manifest_version": 2,
 	"version": "0.0.1",
+	"description": "GPL-3.0+ A lightweight form-capturing utility.",
 	"content_scripts": [{
 			"matches": ["<all_urls>"],
 			"js": ["saveFormsWithListeners.js"],
