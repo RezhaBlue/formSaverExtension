@@ -1,7 +1,7 @@
 {
 	"name": "Autosave Online",
 	"manifest_version": 2,
-	"version": "0.0.1",
+	"version": "0.0.3",
 	"description": "GPL-3.0+ A lightweight form-capturing utility.",
 	"content_scripts": [{
 			"matches": ["<all_urls>"],
@@ -14,5 +14,10 @@
 			"browser_style": true,
 			"default_icon": "verified-text-paper.svg",
 			"default_popup": "accessSavedData.html"
+		},
+	"applications": {
+			"gecko": {
+				"id": "{a47bd1cb-471b-48c0-89a8-ed4fb9d6567d}"
+			}
 		}
 }
