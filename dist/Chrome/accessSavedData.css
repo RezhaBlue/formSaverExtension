@@ -1,0 +1,87 @@
+body {
+	max-height: 100em;
+	height: 40em;
+	background-color: #000000;
+	color: white;
+}
+
+#header, #clearAll {
+	text-align: center;
+	display: block;
+	margin: 0 auto;
+}
+
+#header {
+	width: 100%;
+}
+
+#clearAll {
+	border-radius: 10px;
+	background-color: #85ffff;
+}
+
+#clearAll:hover {
+	background-color: #00e5e6;
+}
+
+#accordion {
+	display: block;
+	height: auto;
+	padding: 0.5em 0.5em 1px 0.5em;
+	margin: 0 auto;
+	position: relative;
+	top: 10px;
+}
+
+.link {
+	height: 1.5em;
+	font-size: 1.5em;
+	max-height: 1.5em;
+	padding: 0 1em;
+	margin: 0 0 0.5em 0;
+	overflow: hidden;
+	transition: max-height 1s ease;
+	box-shadow: 1px 2px 3px azure;
+}
+
+.link a {
+	line-height: 1em;
+	color: white;
+}
+
+.table {
+	width: 100%;
+	padding: 0;
+	margin: 0;
+}
+
+.link:target {
+	height: auto;
+	max-height: 15em;
+	background-color: #050505;
+	overflow-y: auto;
+	transition: max-height 2s ease;
+}
+
+td {
+	vertical-align: top;
+}
+
+.keytd {
+	max-width: 10em;
+	text-overflow: clip;
+}
+
+.link, .link .table {
+	-webkit-transition: all 1s ease;
+	-moz-transition: all 1s ease;
+	-ms-transition: all 1s ease;
+	-o-transition: all 1s ease;
+	transition: all 1s ease;
+	
+	-moz-user-select: text;
+	-khtml-user-select: text;
+	-webkit-user-select: text;
+	-ms-user-select: text;
+	user-select: text;
+}
