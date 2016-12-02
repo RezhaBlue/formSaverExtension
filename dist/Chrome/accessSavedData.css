@@ -1,36 +1,60 @@
+*{
+	font-family: ‘Lucida Sans Unicode’, ‘Lucida Grande’, sans-serif;
+	font-size: 12pt;
+}
 body {
 	max-height: 100em;
 	height: 40em;
-	background-color: #000000;
-	color: white;
-}
-
-#header, #clearAll {
-	text-align: center;
-	display: block;
-	margin: 0 auto;
+	background-color: #FFFFFF;
+	color: Black;
 }
 
 #header {
+	position:absolute;
+	top: 0;
+	left: 0;
+	background-color: red;
 	width: 100%;
+	padding: 3% 3% 3% 6%;
+ 	margin: 0 auto;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 #clearAll {
-	border-radius: 10px;
-	background-color: #85ffff;
+	display: block;
+	position:absolute;
+	vertical-align:top;
+	top:0;
+	left:0;
+	color: white;
+	background-color: #CC0000;
+	padding: 2.9%;
+	border: 0;
+	width: 20%;
+	margin: 0 auto;
+	margin-left: 75%;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;	
 }
 
 #clearAll:hover {
-	background-color: #00e5e6;
+	border-width: thick;
+	border-bottom-style: solid;
+	border-color: #CC0000;
+ 	background: red;
 }
 
 #accordion {
 	display: block;
+	position: relative;
 	height: auto;
 	padding: 0.5em 0.5em 1px 0.5em;
 	margin: 0 auto;
-	position: relative;
 	top: 10px;
+	background-color: red;
 }
 
 .link {
@@ -41,10 +65,10 @@ body {
 	margin: 0 0 0.5em 0;
 	overflow: hidden;
 	transition: max-height 1s ease;
-	box-shadow: 1px 2px 3px azure;
 }
 
 .link a {
+	text-decoration: none;
 	line-height: 1em;
 	color: white;
 }
@@ -58,12 +82,15 @@ body {
 .link:target {
 	height: auto;
 	max-height: 15em;
-	background-color: #050505;
+	background-color: red;
 	overflow-y: auto;
 	transition: max-height 2s ease;
 }
 
 td {
+	text-align: left;
+	color: black;
+	background-color: white;
 	vertical-align: top;
 }
 
