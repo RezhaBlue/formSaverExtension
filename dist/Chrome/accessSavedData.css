@@ -1,52 +1,89 @@
 body {
+	font-family: Verdana, Geneva, sans-serif;
 	max-height: 100em;
 	height: 40em;
-	background-color: #000000;
-	color: white;
+	background-color: #5E90AF;
 }
 
 #header, #clearAll {
-	text-align: center;
-	display: block;
+	top: 5%;
+	display: inline-block;
 	margin: 0 auto;
+	height: 8%;
 }
 
 #header {
-	width: 100%;
+	font-size: 1.125em;
+	/*new below*/
+	color: white;
+	padding-left: 0.8em;
+	margin-right: 5%;
 }
 
+
 #clearAll {
-	border-radius: 10px;
-	background-color: #85ffff;
+	right:0;
+	border: none;
+	background-color: #ABDCFB;
+	color: white;
 }
 
 #clearAll:hover {
-	background-color: #00e5e6;
+	background-color: #87CEFA;
 }
 
 #accordion {
+	clear: right;
 	display: block;
 	height: auto;
-	padding: 0.5em 0.5em 1px 0.5em;
 	margin: 0 auto;
 	position: relative;
-	top: 10px;
+	top: 5%;
+	/*new below*/
+	border-left: solid 2px #333;
+	border-right: solid 2px #333;
 }
 
 .link {
+	color: white;
+	background-color: white;
 	height: 1.5em;
 	font-size: 1.5em;
-	max-height: 1.5em;
+	max-height: 2em;
 	padding: 0 1em;
-	margin: 0 0 0.5em 0;
 	overflow: hidden;
 	transition: max-height 1s ease;
-	box-shadow: 1px 2px 3px azure;
+	/*new below*/
+	border-bottom:solid 1px #ccc;
 }
 
 .link a {
-	line-height: 1em;
-	color: white;
+	/*1.5em*/
+	line-height: 1.5em;
+	/*new below*/
+	display: block;
+	text-decoration: none;
+	color: #333;
+	padding-bottom: .5em;
+/* 	border-bottom:solid 1px #ccc; */
+}
+
+.link:target > a:before{
+	content:"► "
+}
+
+.link:target > a{
+	color: #00BFFF;
+	border-bottom:solid 1px #00BFFF;
+}
+
+.link:target {
+	height: auto;
+	max-height: 15em;
+	overflow-y: auto;
+	transition: max-height 2s ease;
+	/* border:solid 2px red; */
+	
 }
 
 .table {
@@ -54,16 +91,19 @@ body {
 	padding: 0;
 	margin: 0;
 }
-
-.link:target {
-	height: auto;
-	max-height: 15em;
-	background-color: #050505;
-	overflow-y: auto;
-	transition: max-height 2s ease;
+	/*new below*/
+th {
+	text-align: left;
+	text-transform: uppercase;
+	font-weight: bold;
+}
+	/*new below*/
+th:nth-child(odd){
+	border-right: solid 1px #ccc;
 }
 
 td {
+	background-color: white;
 	vertical-align: top;
 }
 
